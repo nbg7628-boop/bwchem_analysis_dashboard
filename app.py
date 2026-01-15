@@ -3007,5 +3007,3 @@ else:
     
     💡 *Secrets에 Google Drive 파일 ID를 저장하면 자동으로 로드됩니다.*
     """)
-else:
-    st.warning("👈 Secrets 설정 또는 수동으로 파일 ID를 입력해주세요.")
