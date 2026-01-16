@@ -42,6 +42,7 @@ st.markdown("""
     .stMultiSelect > div > div {
         background-color: #ffffff !important;
         border-radius: 5px;
+        border: 1px solid #cccccc !important;
     }
     .stMultiSelect > div > div > div {
         background-color: #ffffff !important;
@@ -60,19 +61,68 @@ st.markdown("""
     }
     .stMultiSelect input {
         color: #000000 !important;
+        background-color: #ffffff !important;
     }
     .stMultiSelect [data-baseweb="icon"] {
         color: #000000 !important;
     }
     
+    /* ★★★ 멀티셀렉트 드롭다운 목록 (팝업) ★★★ */
+    [data-baseweb="popover"] {
+        background-color: #ffffff !important;
+    }
+    [data-baseweb="popover"] li {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    [data-baseweb="popover"] li:hover {
+        background-color: #e6e6e6 !important;
+    }
+    [data-baseweb="menu"] {
+        background-color: #ffffff !important;
+    }
+    [data-baseweb="menu"] li {
+        color: #000000 !important;
+    }
+    [role="listbox"] {
+        background-color: #ffffff !important;
+    }
+    [role="option"] {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    [role="option"]:hover {
+        background-color: #e6e6e6 !important;
+    }
+    
+    /* ★★★ 셀렉트박스 드롭다운 ★★★ */
+    .stSelectbox [data-baseweb="select"] > div {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #cccccc !important;
+    }
+    .stSelectbox svg {
+        fill: #000000 !important;
+    }
+    
     /* 일반 입력 필드 */
-    .stTextInput > div > div > input,
-    .stSelectbox > div > div > div {
+    .stTextInput > div > div > input {
         background-color: #262730 !important;
         color: #fafafa !important;
     }
     
-    /* 버튼 */
+    /* ★★★ 다운로드 버튼 - 항상 보이게 ★★★ */
+    .stDownloadButton > button {
+        background-color: #1f77b4 !important;
+        color: #ffffff !important;
+        border: 1px solid #1f77b4 !important;
+    }
+    .stDownloadButton > button:hover {
+        background-color: #1565c0 !important;
+        border: 1px solid #1565c0 !important;
+    }
+    
+    /* 일반 버튼 */
     .stButton > button {
         background-color: #262730 !important;
         color: #fafafa !important;
@@ -116,6 +166,14 @@ st.markdown("""
     /* 구분선 */
     hr {
         border-color: #4a4a4a !important;
+    }
+    
+    /* ★★★ 링크 색상 - 항상 보이게 ★★★ */
+    a {
+        color: #4da6ff !important;
+    }
+    a:hover {
+        color: #80bdff !important;
     }
     
     /* ★★★ 인쇄 전용 CSS - 흰 배경으로 자동 변환 ★★★ */
