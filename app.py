@@ -214,15 +214,25 @@ st.markdown("""
         background-color: #0e1117 !important;
     }
     
-    /* ★★★ 데이터프레임/표 - 다크모드 강제 ★★★ */
+    /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+    /* ★★★ 데이터프레임/표 - 다크모드 완전 강제 ★★★ */
+    /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
     .stDataFrame {
         background-color: #262730 !important;
+    }
+    .stDataFrame * {
+        background-color: #262730 !important;
+        color: #fafafa !important;
     }
     .stDataFrame > div {
         background-color: #262730 !important;
     }
     [data-testid="stDataFrame"] {
         background-color: #262730 !important;
+    }
+    [data-testid="stDataFrame"] * {
+        background-color: #262730 !important;
+        color: #fafafa !important;
     }
     [data-testid="stDataFrame"] > div {
         background-color: #262730 !important;
@@ -243,10 +253,66 @@ st.markdown("""
     [data-testid="stDataFrameGlideDataEditor"] {
         background-color: #262730 !important;
     }
+    [data-testid="stDataFrameGlideDataEditor"] * {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
     .dvn-scroller {
         background-color: #262730 !important;
     }
+    .dvn-scroller * {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
     .dvn-underlay {
+        background-color: #262730 !important;
+    }
+    
+    /* ★★★ Glide DataGrid 추가 CSS ★★★ */
+    canvas {
+        background-color: #262730 !important;
+    }
+    [data-testid="glide-data-grid-canvas"] {
+        background-color: #262730 !important;
+    }
+    .gdg-style {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    .gdg-style * {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    /* 데이터그리드 컨테이너 */
+    [class*="glideDataEditor"] {
+        background-color: #262730 !important;
+    }
+    [class*="glideDataEditor"] * {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    /* 데이터프레임 wrapper */
+    [class*="stDataFrame"] {
+        background-color: #262730 !important;
+    }
+    [class*="dataframe"] {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    [class*="dataframe"] * {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    /* element container 내부 */
+    .element-container [data-testid="stDataFrame"] {
+        background-color: #262730 !important;
+    }
+    .element-container [data-testid="stDataFrame"] * {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    /* iframe 내부도 강제 */
+    iframe {
         background-color: #262730 !important;
     }
     
