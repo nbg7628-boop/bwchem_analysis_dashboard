@@ -38,11 +38,40 @@ st.markdown("""
         color: #fafafa !important;
     }
     
-    /* ★★★ 통합검색 멀티셀렉트 - 흰색 배경, 검정색 글씨/화살표 ★★★ */
+    /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+    /* ★★★ 모든 입력 필드 통일: 흰배경 + 검정글씨 + 빨간테두리 ★★★ */
+    /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+    
+    /* ★★★ 셀렉트박스 (연도, 월 선택 등) ★★★ */
+    .stSelectbox > div > div {
+        background-color: #ffffff !important;
+        border: 2px solid #ff4b4b !important;
+        border-radius: 5px !important;
+    }
+    .stSelectbox > div > div > div {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    .stSelectbox [data-baseweb="select"] {
+        background-color: #ffffff !important;
+    }
+    .stSelectbox [data-baseweb="select"] > div {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    .stSelectbox span {
+        color: #000000 !important;
+    }
+    .stSelectbox svg {
+        fill: #000000 !important;
+        color: #000000 !important;
+    }
+    
+    /* ★★★ 멀티셀렉트 (거래처, 품목, 담당자 검색) ★★★ */
     .stMultiSelect > div > div {
         background-color: #ffffff !important;
-        border-radius: 5px;
-        border: 1px solid #cccccc !important;
+        border: 2px solid #ff4b4b !important;
+        border-radius: 5px !important;
     }
     .stMultiSelect > div > div > div {
         background-color: #ffffff !important;
@@ -66,63 +95,72 @@ st.markdown("""
     .stMultiSelect [data-baseweb="icon"] {
         color: #000000 !important;
     }
+    .stMultiSelect span {
+        color: #000000 !important;
+    }
     
-    /* ★★★ 멀티셀렉트 드롭다운 목록 (팝업) ★★★ */
+    /* ★★★ 드롭다운 목록 (팝업 메뉴) ★★★ */
     [data-baseweb="popover"] {
         background-color: #ffffff !important;
+        border: 1px solid #cccccc !important;
     }
-    [data-baseweb="popover"] li {
+    [data-baseweb="popover"] * {
         background-color: #ffffff !important;
         color: #000000 !important;
     }
     [data-baseweb="popover"] li:hover {
-        background-color: #e6e6e6 !important;
+        background-color: #ffe0e0 !important;
     }
     [data-baseweb="menu"] {
         background-color: #ffffff !important;
     }
-    [data-baseweb="menu"] li {
+    [data-baseweb="menu"] * {
+        background-color: #ffffff !important;
         color: #000000 !important;
+    }
+    [data-baseweb="menu"] li:hover {
+        background-color: #ffe0e0 !important;
     }
     [role="listbox"] {
         background-color: #ffffff !important;
+    }
+    [role="listbox"] * {
+        background-color: #ffffff !important;
+        color: #000000 !important;
     }
     [role="option"] {
         background-color: #ffffff !important;
         color: #000000 !important;
     }
     [role="option"]:hover {
-        background-color: #e6e6e6 !important;
+        background-color: #ffe0e0 !important;
     }
-    
-    /* ★★★ 셀렉트박스 드롭다운 ★★★ */
-    .stSelectbox [data-baseweb="select"] > div {
+    ul[role="listbox"] li {
         background-color: #ffffff !important;
         color: #000000 !important;
-        border: 1px solid #cccccc !important;
-    }
-    .stSelectbox svg {
-        fill: #000000 !important;
     }
     
-    /* 일반 입력 필드 */
+    /* ★★★ 일반 입력 필드 ★★★ */
     .stTextInput > div > div > input {
-        background-color: #262730 !important;
-        color: #fafafa !important;
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #ff4b4b !important;
+        border-radius: 5px !important;
     }
     
-    /* ★★★ 다운로드 버튼 - 항상 보이게 ★★★ */
+    /* ★★★ 다운로드 버튼 - 파란색으로 눈에 띄게 ★★★ */
     .stDownloadButton > button {
         background-color: #1f77b4 !important;
         color: #ffffff !important;
-        border: 1px solid #1f77b4 !important;
+        border: 2px solid #1f77b4 !important;
+        font-weight: bold !important;
     }
     .stDownloadButton > button:hover {
         background-color: #1565c0 !important;
-        border: 1px solid #1565c0 !important;
+        border: 2px solid #1565c0 !important;
     }
     
-    /* 일반 버튼 */
+    /* ★★★ 일반 버튼 ★★★ */
     .stButton > button {
         background-color: #262730 !important;
         color: #fafafa !important;
