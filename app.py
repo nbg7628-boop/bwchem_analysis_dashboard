@@ -14,6 +14,10 @@ st.set_page_config(page_title="범우켐 통합분석", layout="wide")
 # ★★★ 다크모드 강제 적용 CSS ★★★
 st.markdown("""
 <style>
+    /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+    /* ★★★ 전체 다크모드 강제 적용 ★★★ */
+    /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+    
     /* 전체 배경 다크모드 */
     .stApp {
         background-color: #0e1117 !important;
@@ -39,10 +43,10 @@ st.markdown("""
     }
     
     /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
-    /* ★★★ 모든 입력 필드 통일: 흰배경 + 검정글씨 + 빨간테두리 ★★★ */
+    /* ★★★ 입력 필드: 흰배경 + 검정글씨 + 빨간테두리 (통합검색처럼) ★★★ */
     /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
     
-    /* ★★★ 셀렉트박스 (연도, 월 선택 등) ★★★ */
+    /* ★★★ 셀렉트박스 (연도, 월 선택 등) - 선택값 보이게 ★★★ */
     .stSelectbox > div > div {
         background-color: #ffffff !important;
         border: 2px solid #ff4b4b !important;
@@ -59,12 +63,32 @@ st.markdown("""
         background-color: #ffffff !important;
         color: #000000 !important;
     }
-    .stSelectbox span {
+    .stSelectbox [data-baseweb="select"] span {
+        color: #000000 !important;
+    }
+    .stSelectbox [data-baseweb="select"] div[data-testid="stMarkdownContainer"] {
+        color: #000000 !important;
+    }
+    /* 선택된 값 텍스트 */
+    .stSelectbox [data-baseweb="select"] [data-testid="stWidgetLabel"] {
+        color: #000000 !important;
+    }
+    .stSelectbox div[data-baseweb="select"] > div:first-child {
+        color: #000000 !important;
+    }
+    .stSelectbox div[data-baseweb="select"] > div > div {
         color: #000000 !important;
     }
     .stSelectbox svg {
         fill: #000000 !important;
         color: #000000 !important;
+    }
+    /* 셀렉트박스 내부 모든 텍스트 검정색 */
+    .stSelectbox * {
+        color: #000000 !important;
+    }
+    .stSelectbox > label {
+        color: #fafafa !important;
     }
     
     /* ★★★ 멀티셀렉트 (거래처, 품목, 담당자 검색) ★★★ */
@@ -97,6 +121,9 @@ st.markdown("""
     }
     .stMultiSelect span {
         color: #000000 !important;
+    }
+    .stMultiSelect > label {
+        color: #fafafa !important;
     }
     
     /* ★★★ 드롭다운 목록 (팝업 메뉴) ★★★ */
@@ -167,22 +194,98 @@ st.markdown("""
         border: 1px solid #4a4a4a !important;
     }
     
+    /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+    /* ★★★ 탭/표/필터 - 다크모드 강제 ★★★ */
+    /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+    
     /* 탭 */
     .stTabs [data-baseweb="tab-list"] {
         background-color: #262730 !important;
     }
     .stTabs [data-baseweb="tab"] {
         color: #fafafa !important;
+        background-color: #262730 !important;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #0e1117 !important;
+        color: #ffffff !important;
+    }
+    .stTabs [data-baseweb="tab-panel"] {
+        background-color: #0e1117 !important;
     }
     
-    /* 데이터프레임 */
+    /* ★★★ 데이터프레임/표 - 다크모드 강제 ★★★ */
     .stDataFrame {
         background-color: #262730 !important;
     }
+    .stDataFrame > div {
+        background-color: #262730 !important;
+    }
+    [data-testid="stDataFrame"] {
+        background-color: #262730 !important;
+    }
+    [data-testid="stDataFrame"] > div {
+        background-color: #262730 !important;
+    }
+    /* 테이블 전체 */
+    .stDataFrame table {
+        background-color: #262730 !important;
+    }
+    .stDataFrame th {
+        background-color: #1a1a2e !important;
+        color: #fafafa !important;
+    }
+    .stDataFrame td {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    /* glide 데이터그리드 (Streamlit 내부) */
+    [data-testid="stDataFrameGlideDataEditor"] {
+        background-color: #262730 !important;
+    }
+    .dvn-scroller {
+        background-color: #262730 !important;
+    }
+    .dvn-underlay {
+        background-color: #262730 !important;
+    }
     
-    /* 정보 박스 */
+    /* ★★★ 정보/경고/성공 박스 - 다크모드 강제 ★★★ */
     .stAlert {
         background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    [data-testid="stAlert"] {
+        background-color: #262730 !important;
+    }
+    .stAlert > div {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    /* info 박스 */
+    .stAlert[data-baseweb="notification"] {
+        background-color: #262730 !important;
+    }
+    div[data-testid="stNotification"] {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    
+    /* ★★★ 메트릭 카드 - 다크모드 강제 ★★★ */
+    [data-testid="metric-container"] {
+        background-color: #262730 !important;
+        border: 1px solid #4a4a4a !important;
+        border-radius: 5px !important;
+        padding: 10px !important;
+    }
+    [data-testid="metric-container"] * {
+        color: #fafafa !important;
+    }
+    [data-testid="stMetricValue"] {
+        color: #fafafa !important;
+    }
+    [data-testid="stMetricDelta"] {
+        color: #fafafa !important;
     }
     
     /* 라디오 버튼 */
@@ -195,10 +298,23 @@ st.markdown("""
         background-color: #262730 !important;
         color: #fafafa !important;
     }
-    
-    /* 메트릭 */
-    [data-testid="metric-container"] {
+    [data-testid="stExpander"] {
         background-color: #262730 !important;
+        border: 1px solid #4a4a4a !important;
+    }
+    [data-testid="stExpander"] > div {
+        background-color: #262730 !important;
+    }
+    
+    /* ★★★ 컬럼/컨테이너 배경 다크 강제 ★★★ */
+    [data-testid="column"] {
+        background-color: #0e1117 !important;
+    }
+    [data-testid="stVerticalBlock"] {
+        background-color: #0e1117 !important;
+    }
+    [data-testid="stHorizontalBlock"] {
+        background-color: #0e1117 !important;
     }
     
     /* 구분선 */
@@ -211,6 +327,24 @@ st.markdown("""
         color: #4da6ff !important;
     }
     a:hover {
+        color: #80bdff !important;
+    }
+    
+    /* ★★★ 마크다운 텍스트 ★★★ */
+    .stMarkdown {
+        color: #fafafa !important;
+    }
+    .stMarkdown * {
+        color: #fafafa !important;
+    }
+    
+    /* ★★★ 캡션 ★★★ */
+    .stCaption {
+        color: #fafafa !important;
+    }
+    
+    /* ★★★ 인쇄 전용 CSS - 흰 배경으로 자동 변환 ★★★ */
+    @media print {
         color: #80bdff !important;
     }
     
