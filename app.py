@@ -273,20 +273,23 @@ st.markdown("""
         background-color: #262730 !important;
     }
     
-    /* ★★★ 컬럼/컨테이너 배경 다크 강제 ★★★ */
+    /* ★★★ 컬럼/컨테이너 배경 - 검정줄 방지 ★★★ */
     [data-testid="column"] {
-        background-color: #0e1117 !important;
+        background-color: transparent !important;
     }
     [data-testid="stVerticalBlock"] {
-        background-color: #0e1117 !important;
+        background-color: transparent !important;
     }
     [data-testid="stHorizontalBlock"] {
-        background-color: #0e1117 !important;
+        background-color: transparent !important;
     }
     
-    /* 구분선 */
+    /* 구분선 - 검정줄 방지 */
     hr {
-        border-color: #4a4a4a !important;
+        border: none !important;
+        border-top: 1px solid #4a4a4a !important;
+        background-color: transparent !important;
+        height: 1px !important;
     }
     
     /* ★★★ 링크 색상 - 항상 보이게 ★★★ */
@@ -310,12 +313,7 @@ st.markdown("""
         color: #fafafa !important;
     }
     
-    /* ★★★ 인쇄 전용 CSS - 흰 배경으로 자동 변환 ★★★ */
-    @media print {
-        color: #80bdff !important;
-    }
-    
-    /* ★★★ 인쇄 전용 CSS - 흰 배경으로 자동 변환 ★★★ */
+    /* ★★★ 인쇄/PDF 전용 CSS ★★★ */
     @media print {
         /* 전체 배경 흰색 */
         .stApp, .main, .block-container, [data-testid="stAppViewContainer"],
@@ -329,9 +327,39 @@ st.markdown("""
             background: #ffffff !important;
         }
         
+        /* ★★★ 검정줄 방지 - 컨테이너 배경 ★★★ */
+        [data-testid="stVerticalBlock"],
+        [data-testid="stHorizontalBlock"],
+        [data-testid="column"],
+        [data-testid="stVerticalBlockBorderWrapper"] {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+        
+        /* ★★★ 구분선 검정줄 방지 ★★★ */
+        hr {
+            border: none !important;
+            border-top: 1px solid #cccccc !important;
+            background-color: transparent !important;
+            background: transparent !important;
+            height: 1px !important;
+        }
+        
         /* 모든 텍스트 검정색 */
         h1, h2, h3, h4, h5, h6, p, span, label, div, td, th, li, a {
             color: #000000 !important;
+        }
+        
+        /* ★★★ Streamlit 컬러 문법 PDF 출력 지원 ★★★ */
+        span[style*="color: red"], span[style*="color:red"] {
+            color: red !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        span[style*="color: blue"], span[style*="color:blue"] {
+            color: blue !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
         
         /* 사이드바 숨김 */
@@ -339,20 +367,19 @@ st.markdown("""
             display: none !important;
         }
         
-        /* ★★★ 섹션별 페이지 나눔 ★★★ */
+        /* 섹션별 페이지 나눔 */
         .print-page-break {
             page-break-before: always !important;
             break-before: page !important;
         }
         
-        /* 데이터프레임/테이블 - 완전히 보이게 */
+        /* 데이터프레임/테이블 */
         .stDataFrame, [data-testid="stDataFrame"], 
         [data-testid="stTable"], table {
             background-color: #ffffff !important;
             border: 1px solid #333333 !important;
         }
         
-        /* 테이블 셀 */
         table td, table th, .stDataFrame td, .stDataFrame th,
         [data-testid="stDataFrame"] td, [data-testid="stDataFrame"] th {
             background-color: #ffffff !important;
@@ -361,7 +388,6 @@ st.markdown("""
             padding: 8px !important;
         }
         
-        /* 테이블 헤더 */
         table thead th, .stDataFrame thead th {
             background-color: #f0f0f0 !important;
             color: #000000 !important;
@@ -373,6 +399,9 @@ st.markdown("""
             background-color: #f8f9fa !important;
             border: 1px solid #dee2e6 !important;
         }
+        [data-testid="metric-container"] * {
+            color: #000000 !important;
+        }
         
         /* 알림/정보 박스 */
         .stAlert, [data-testid="stAlert"] {
@@ -381,13 +410,12 @@ st.markdown("""
             color: #000000 !important;
         }
         
-        /* Plotly 차트 - 배경 및 텍스트 */
+        /* Plotly 차트 */
         .js-plotly-plot, .plot-container, .plotly,
         [data-testid="stPlotlyChart"] {
             background-color: #ffffff !important;
         }
         
-        /* 차트 내부 텍스트 (범례, 축 레이블 등) */
         .js-plotly-plot text, .plotly text,
         .legend text, .gtitle, .xtitle, .ytitle,
         .xtick text, .ytick text {
@@ -395,22 +423,23 @@ st.markdown("""
             color: #000000 !important;
         }
         
-        /* SVG 내부 텍스트 */
         svg text, svg tspan {
             fill: #000000 !important;
         }
         
-        /* 범례 배경 */
         .legend, .legendtext {
             fill: #000000 !important;
         }
         
-        /* 탭 버튼 */
+        /* 탭 */
         .stTabs [data-baseweb="tab-list"] {
             background-color: #f0f0f0 !important;
         }
         .stTabs [data-baseweb="tab"] {
             color: #000000 !important;
+            background-color: #ffffff !important;
+        }
+        .stTabs [data-baseweb="tab-panel"] {
             background-color: #ffffff !important;
         }
         
@@ -421,36 +450,32 @@ st.markdown("""
             border: 1px solid #333333 !important;
         }
         
-        /* 라디오/체크박스 레이블 */
         .stRadio label, .stCheckbox label {
             color: #000000 !important;
         }
         
-        /* 익스팬더 */
         .streamlit-expanderHeader {
             background-color: #f0f0f0 !important;
             color: #000000 !important;
         }
         
-        /* 마크다운 텍스트 */
         .stMarkdown, .stMarkdown p, .stMarkdown span,
         .stMarkdown div, .stMarkdown li {
             color: #000000 !important;
         }
         
-        /* 컬럼 내부 */
-        [data-testid="column"] {
-            background-color: #ffffff !important;
-        }
-        
-        /* 차트 그리드 라인 */
         .gridlayer line, .zerolinelayer line {
             stroke: #cccccc !important;
         }
         
-        /* 바 차트 텍스트 */
         .bars text, .bar text {
             fill: #000000 !important;
+        }
+        
+        /* Tab B 배너 색상 보존 */
+        div[style*="background-color: #2D3748"] {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
     }
 </style>
