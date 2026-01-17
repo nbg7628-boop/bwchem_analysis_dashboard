@@ -346,7 +346,7 @@ st.markdown("""
         }
         
         /* 모든 텍스트 검정색 */
-        h1, h2, h3, h4, h5, h6, p, span, label, div, td, th, li, a {
+        h1, h2, h3, h4, h5, h6, p, span, label, div, td, th, li, a, strong, b {
             color: #000000 !important;
         }
         
