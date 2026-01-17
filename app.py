@@ -11,297 +11,39 @@ import io
 # =============================================================================
 st.set_page_config(page_title="범우켐 통합분석", layout="wide")
 
-# ★★★ 다크모드/라이트모드 자동 감지 CSS ★★★
+# ★★★ 다크모드 강제 적용 CSS ★★★
 st.markdown("""
 <style>
     /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
-    /* ★★★ 다크모드 (브라우저/시스템 다크모드 감지) ★★★ */
+    /* ★★★ 전체 다크모드 강제 적용 ★★★ */
     /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
-    @media (prefers-color-scheme: dark) {
-        /* 전체 배경 다크모드 */
-        .stApp {
-            background-color: #0e1117 !important;
-            color: #fafafa !important;
-        }
-        
-        /* 사이드바 다크모드 */
-        [data-testid="stSidebar"] {
-            background-color: #262730 !important;
-        }
-        [data-testid="stSidebar"] * {
-            color: #fafafa !important;
-        }
-        
-        /* 메인 컨텐츠 다크모드 */
-        .main .block-container {
-            background-color: #0e1117 !important;
-        }
-        
-        /* 텍스트 색상 - 다크모드 */
-        h1, h2, h3, h4, h5, h6, p, span, label, div {
-            color: #fafafa !important;
-        }
-        
-        /* 컬럼/컨테이너 배경 다크 */
-        [data-testid="column"] {
-            background-color: #0e1117 !important;
-        }
-        [data-testid="stVerticalBlock"] {
-            background-color: #0e1117 !important;
-        }
-        [data-testid="stHorizontalBlock"] {
-            background-color: #0e1117 !important;
-        }
-        
-        /* 구분선 - 다크모드 */
-        hr {
-            border-color: #4a4a4a !important;
-            background-color: transparent !important;
-            height: 1px !important;
-        }
-        
-        /* 탭 - 다크모드 */
-        .stTabs [data-baseweb="tab-list"] {
-            background-color: #262730 !important;
-        }
-        .stTabs [data-baseweb="tab"] {
-            color: #fafafa !important;
-            background-color: #262730 !important;
-        }
-        .stTabs [aria-selected="true"] {
-            background-color: #0e1117 !important;
-            color: #ffffff !important;
-        }
-        .stTabs [data-baseweb="tab-panel"] {
-            background-color: #0e1117 !important;
-        }
-        
-        /* 정보/경고/성공 박스 - 다크모드 */
-        .stAlert {
-            background-color: #262730 !important;
-            color: #fafafa !important;
-        }
-        [data-testid="stAlert"] {
-            background-color: #262730 !important;
-        }
-        .stAlert > div {
-            background-color: #262730 !important;
-            color: #fafafa !important;
-        }
-        div[data-testid="stNotification"] {
-            background-color: #262730 !important;
-            color: #fafafa !important;
-        }
-        
-        /* 메트릭 카드 - 다크모드 */
-        [data-testid="metric-container"] {
-            background-color: #262730 !important;
-            border: 1px solid #4a4a4a !important;
-            border-radius: 5px !important;
-            padding: 10px !important;
-        }
-        [data-testid="metric-container"] * {
-            color: #fafafa !important;
-        }
-        [data-testid="stMetricValue"] {
-            color: #fafafa !important;
-        }
-        [data-testid="stMetricDelta"] {
-            color: #fafafa !important;
-        }
-        
-        /* 익스팬더 - 다크모드 */
-        .streamlit-expanderHeader {
-            background-color: #262730 !important;
-            color: #fafafa !important;
-        }
-        [data-testid="stExpander"] {
-            background-color: #262730 !important;
-            border: 1px solid #4a4a4a !important;
-        }
-        [data-testid="stExpander"] > div {
-            background-color: #262730 !important;
-        }
-        
-        /* 마크다운 텍스트 - 다크모드 */
-        .stMarkdown {
-            color: #fafafa !important;
-        }
-        .stMarkdown * {
-            color: #fafafa !important;
-        }
-        
-        /* 캡션 - 다크모드 */
-        .stCaption {
-            color: #fafafa !important;
-        }
-        
-        /* 링크 색상 - 다크모드 */
-        a {
-            color: #4da6ff !important;
-        }
-        a:hover {
-            color: #80bdff !important;
-        }
-        
-        /* 일반 버튼 - 다크모드 */
-        .stButton > button {
-            background-color: #262730 !important;
-            color: #fafafa !important;
-            border: 1px solid #4a4a4a !important;
-        }
-        
-        /* 라디오 버튼 - 다크모드 */
-        .stRadio > div {
-            background-color: transparent !important;
-        }
+    
+    /* 전체 배경 다크모드 */
+    .stApp {
+        background-color: #0e1117 !important;
+        color: #fafafa !important;
+    }
+    
+    /* 사이드바 다크모드 */
+    [data-testid="stSidebar"] {
+        background-color: #262730 !important;
+    }
+    [data-testid="stSidebar"] * {
+        color: #fafafa !important;
+    }
+    
+    /* 메인 컨텐츠 다크모드 */
+    .main .block-container {
+        background-color: #0e1117 !important;
+    }
+    
+    /* 텍스트 색상 */
+    h1, h2, h3, h4, h5, h6, p, span, label, div {
+        color: #fafafa !important;
     }
     
     /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
-    /* ★★★ 라이트모드 (브라우저/시스템 라이트모드 감지) ★★★ */
-    /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
-    @media (prefers-color-scheme: light) {
-        /* 전체 배경 라이트모드 */
-        .stApp {
-            background-color: #ffffff !important;
-            color: #1a1a1a !important;
-        }
-        
-        /* 사이드바 라이트모드 */
-        [data-testid="stSidebar"] {
-            background-color: #f0f2f6 !important;
-        }
-        [data-testid="stSidebar"] * {
-            color: #1a1a1a !important;
-        }
-        
-        /* 메인 컨텐츠 라이트모드 */
-        .main .block-container {
-            background-color: #ffffff !important;
-        }
-        
-        /* 텍스트 색상 - 라이트모드 */
-        h1, h2, h3, h4, h5, h6, p, span, label, div {
-            color: #1a1a1a !important;
-        }
-        
-        /* 컬럼/컨테이너 배경 라이트 */
-        [data-testid="column"] {
-            background-color: #ffffff !important;
-        }
-        [data-testid="stVerticalBlock"] {
-            background-color: #ffffff !important;
-        }
-        [data-testid="stHorizontalBlock"] {
-            background-color: #ffffff !important;
-        }
-        
-        /* 구분선 - 라이트모드 */
-        hr {
-            border-color: #e0e0e0 !important;
-            background-color: transparent !important;
-            height: 1px !important;
-        }
-        
-        /* 탭 - 라이트모드 */
-        .stTabs [data-baseweb="tab-list"] {
-            background-color: #f0f2f6 !important;
-        }
-        .stTabs [data-baseweb="tab"] {
-            color: #1a1a1a !important;
-            background-color: #f0f2f6 !important;
-        }
-        .stTabs [aria-selected="true"] {
-            background-color: #ffffff !important;
-            color: #1a1a1a !important;
-        }
-        .stTabs [data-baseweb="tab-panel"] {
-            background-color: #ffffff !important;
-        }
-        
-        /* 정보/경고/성공 박스 - 라이트모드 */
-        .stAlert {
-            background-color: #f8f9fa !important;
-            color: #1a1a1a !important;
-        }
-        [data-testid="stAlert"] {
-            background-color: #f8f9fa !important;
-        }
-        .stAlert > div {
-            background-color: #f8f9fa !important;
-            color: #1a1a1a !important;
-        }
-        div[data-testid="stNotification"] {
-            background-color: #f8f9fa !important;
-            color: #1a1a1a !important;
-        }
-        
-        /* 메트릭 카드 - 라이트모드 */
-        [data-testid="metric-container"] {
-            background-color: #f8f9fa !important;
-            border: 1px solid #dee2e6 !important;
-            border-radius: 5px !important;
-            padding: 10px !important;
-        }
-        [data-testid="metric-container"] * {
-            color: #1a1a1a !important;
-        }
-        [data-testid="stMetricValue"] {
-            color: #1a1a1a !important;
-        }
-        [data-testid="stMetricDelta"] {
-            color: #1a1a1a !important;
-        }
-        
-        /* 익스팬더 - 라이트모드 */
-        .streamlit-expanderHeader {
-            background-color: #f0f2f6 !important;
-            color: #1a1a1a !important;
-        }
-        [data-testid="stExpander"] {
-            background-color: #f8f9fa !important;
-            border: 1px solid #dee2e6 !important;
-        }
-        [data-testid="stExpander"] > div {
-            background-color: #f8f9fa !important;
-        }
-        
-        /* 마크다운 텍스트 - 라이트모드 */
-        .stMarkdown {
-            color: #1a1a1a !important;
-        }
-        .stMarkdown * {
-            color: #1a1a1a !important;
-        }
-        
-        /* 캡션 - 라이트모드 */
-        .stCaption {
-            color: #1a1a1a !important;
-        }
-        
-        /* 링크 색상 - 라이트모드 */
-        a {
-            color: #1f77b4 !important;
-        }
-        a:hover {
-            color: #0d5aa7 !important;
-        }
-        
-        /* 일반 버튼 - 라이트모드 */
-        .stButton > button {
-            background-color: #f0f2f6 !important;
-            color: #1a1a1a !important;
-            border: 1px solid #dee2e6 !important;
-        }
-        
-        /* 라디오 버튼 - 라이트모드 */
-        .stRadio > div {
-            background-color: transparent !important;
-        }
-    }
-    
-    /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
-    /* ★★★ 입력 필드: 흰배경 + 검정글씨 + 빨간테두리 (모든 모드 공통) ★★★ */
+    /* ★★★ 입력 필드: 흰배경 + 검정글씨 + 빨간테두리 (통합검색처럼) ★★★ */
     /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
     
     /* ★★★ 셀렉트박스 (연도, 월 선택 등) - 선택값 보이게 ★★★ */
@@ -345,6 +87,9 @@ st.markdown("""
     .stSelectbox * {
         color: #000000 !important;
     }
+    .stSelectbox > label {
+        color: #fafafa !important;
+    }
     
     /* ★★★ 멀티셀렉트 (거래처, 품목, 담당자 검색) ★★★ */
     .stMultiSelect > div > div {
@@ -376,6 +121,9 @@ st.markdown("""
     }
     .stMultiSelect span {
         color: #000000 !important;
+    }
+    .stMultiSelect > label {
+        color: #fafafa !important;
     }
     
     /* ★★★ 드롭다운 목록 (팝업 메뉴) ★★★ */
@@ -439,203 +187,301 @@ st.markdown("""
         border: 2px solid #1565c0 !important;
     }
     
-    /* ★★★ 셀렉트박스/멀티셀렉트 라벨 색상 (모드별) ★★★ */
-    @media (prefers-color-scheme: dark) {
-        .stSelectbox > label {
-            color: #fafafa !important;
-        }
-        .stMultiSelect > label {
-            color: #fafafa !important;
-        }
-    }
-    @media (prefers-color-scheme: light) {
-        .stSelectbox > label {
-            color: #1a1a1a !important;
-        }
-        .stMultiSelect > label {
-            color: #1a1a1a !important;
-        }
+    /* ★★★ 일반 버튼 ★★★ */
+    .stButton > button {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+        border: 1px solid #4a4a4a !important;
     }
     
     /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
-    /* ★★★ PDF/인쇄 - 현재 모드 그대로 유지 ★★★ */
+    /* ★★★ 탭/표/필터 - 다크모드 강제 ★★★ */
     /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
     
-    /* 인쇄 시 사이드바 숨김 */
+    /* 탭 */
+    .stTabs [data-baseweb="tab-list"] {
+        background-color: #262730 !important;
+    }
+    .stTabs [data-baseweb="tab"] {
+        color: #fafafa !important;
+        background-color: #262730 !important;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #0e1117 !important;
+        color: #ffffff !important;
+    }
+    .stTabs [data-baseweb="tab-panel"] {
+        background-color: #0e1117 !important;
+    }
+    
+    /* ★★★ 표/데이터프레임은 Streamlit 기본 테마 사용 ★★★ */
+    /* (다크모드 → 다크표, 라이트모드 → 라이트표) */
+    
+    /* ★★★ 정보/경고/성공 박스 - 다크모드 강제 ★★★ */
+    .stAlert {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    [data-testid="stAlert"] {
+        background-color: #262730 !important;
+    }
+    .stAlert > div {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    /* info 박스 */
+    .stAlert[data-baseweb="notification"] {
+        background-color: #262730 !important;
+    }
+    div[data-testid="stNotification"] {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    
+    /* ★★★ 메트릭 카드 - 다크모드 강제 ★★★ */
+    [data-testid="metric-container"] {
+        background-color: #262730 !important;
+        border: 1px solid #4a4a4a !important;
+        border-radius: 5px !important;
+        padding: 10px !important;
+    }
+    [data-testid="metric-container"] * {
+        color: #fafafa !important;
+    }
+    [data-testid="stMetricValue"] {
+        color: #fafafa !important;
+    }
+    [data-testid="stMetricDelta"] {
+        color: #fafafa !important;
+    }
+    
+    /* 라디오 버튼 */
+    .stRadio > div {
+        background-color: transparent !important;
+    }
+    
+    /* 익스팬더 */
+    .streamlit-expanderHeader {
+        background-color: #262730 !important;
+        color: #fafafa !important;
+    }
+    [data-testid="stExpander"] {
+        background-color: #262730 !important;
+        border: 1px solid #4a4a4a !important;
+    }
+    [data-testid="stExpander"] > div {
+        background-color: #262730 !important;
+    }
+    
+    /* ★★★ 컬럼/컨테이너 배경 - 검정줄 방지 ★★★ */
+    [data-testid="column"] {
+        background-color: transparent !important;
+    }
+    [data-testid="stVerticalBlock"] {
+        background-color: transparent !important;
+    }
+    [data-testid="stHorizontalBlock"] {
+        background-color: transparent !important;
+    }
+    
+    /* 구분선 - 검정줄 방지 */
+    hr {
+        border: none !important;
+        border-top: 1px solid #4a4a4a !important;
+        background-color: transparent !important;
+        height: 1px !important;
+        margin: 10px 0 !important;
+    }
+    
+    /* ★★★ 링크 색상 - 항상 보이게 ★★★ */
+    a {
+        color: #4da6ff !important;
+    }
+    a:hover {
+        color: #80bdff !important;
+    }
+    
+    /* ★★★ 마크다운 텍스트 ★★★ */
+    .stMarkdown {
+        color: #fafafa !important;
+    }
+    .stMarkdown * {
+        color: #fafafa !important;
+    }
+    
+    /* ★★★ 캡션 ★★★ */
+    .stCaption {
+        color: #fafafa !important;
+    }
+    
+    /* ★★★ 인쇄/PDF 전용 CSS - 검정줄 방지 + 흰 배경 ★★★ */
     @media print {
+        /* 전체 배경 흰색 */
+        .stApp, .main, .block-container, [data-testid="stAppViewContainer"],
+        [data-testid="stAppViewBlockContainer"], .element-container {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+        
+        body, html {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+        
+        /* ★★★ 검정줄 방지 - 컨테이너 배경 투명/흰색 ★★★ */
+        [data-testid="stVerticalBlock"],
+        [data-testid="stHorizontalBlock"],
+        [data-testid="column"],
+        .element-container,
+        [data-testid="stVerticalBlockBorderWrapper"] {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        
+        /* ★★★ 구분선 검정줄 방지 ★★★ */
+        hr {
+            border: none !important;
+            border-top: 1px solid #cccccc !important;
+            background-color: transparent !important;
+            background: transparent !important;
+            height: 1px !important;
+            margin: 10px 0 !important;
+        }
+        
+        /* 모든 텍스트 검정색 */
+        h1, h2, h3, h4, h5, h6, p, span, label, div, td, th, li, a {
+            color: #000000 !important;
+        }
+        
+        /* 사이드바 숨김 */
         [data-testid="stSidebar"] {
             display: none !important;
         }
         
-        /* 섹션별 페이지 나눔 */
+        /* ★★★ 섹션별 페이지 나눔 ★★★ */
         .print-page-break {
             page-break-before: always !important;
             break-before: page !important;
         }
         
-        /* ★★★ 검정색 줄(블록) 현상 방지 ★★★ */
-        [data-testid="stVerticalBlock"],
-        [data-testid="stHorizontalBlock"],
-        [data-testid="column"],
-        .element-container {
-            background-color: inherit !important;
-            background: inherit !important;
-        }
-        
-        /* 구분선 스타일 통일 */
-        hr {
-            border: none !important;
-            border-top: 1px solid #cccccc !important;
-            background-color: transparent !important;
-            height: 1px !important;
-            margin: 10px 0 !important;
-        }
-    }
-    
-    /* 다크모드 + 인쇄: 다크 배경 유지 */
-    @media print and (prefers-color-scheme: dark) {
-        .stApp, .main, .block-container, 
-        [data-testid="stAppViewContainer"],
-        [data-testid="stAppViewBlockContainer"] {
-            background-color: #0e1117 !important;
-            background: #0e1117 !important;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-        }
-        
-        body, html {
-            background-color: #0e1117 !important;
-            background: #0e1117 !important;
-        }
-        
-        /* 텍스트 색상 */
-        h1, h2, h3, h4, h5, h6, p, span, label, div, td, th, li {
-            color: #fafafa !important;
-        }
-        
-        /* 컬럼/컨테이너 */
-        [data-testid="column"],
-        [data-testid="stVerticalBlock"],
-        [data-testid="stHorizontalBlock"] {
-            background-color: #0e1117 !important;
-        }
-        
-        /* 메트릭 컨테이너 */
-        [data-testid="metric-container"] {
-            background-color: #262730 !important;
-            border: 1px solid #4a4a4a !important;
-        }
-        
-        /* 알림/정보 박스 */
-        .stAlert, [data-testid="stAlert"] {
-            background-color: #262730 !important;
-            color: #fafafa !important;
-        }
-        
-        /* 탭 */
-        .stTabs [data-baseweb="tab-list"] {
-            background-color: #262730 !important;
-        }
-        .stTabs [data-baseweb="tab"] {
-            color: #fafafa !important;
-            background-color: #262730 !important;
-        }
-        
-        /* 익스팬더 */
-        .streamlit-expanderHeader {
-            background-color: #262730 !important;
-            color: #fafafa !important;
-        }
-        
-        /* 링크 */
-        a {
-            color: #4da6ff !important;
-        }
-        
-        /* 구분선 */
-        hr {
-            border-top-color: #4a4a4a !important;
-        }
-    }
-    
-    /* 라이트모드 + 인쇄: 흰 배경 유지 */
-    @media print and (prefers-color-scheme: light) {
-        .stApp, .main, .block-container, 
-        [data-testid="stAppViewContainer"],
-        [data-testid="stAppViewBlockContainer"] {
+        /* 데이터프레임/테이블 - 완전히 보이게 */
+        .stDataFrame, [data-testid="stDataFrame"], 
+        [data-testid="stTable"], table {
             background-color: #ffffff !important;
-            background: #ffffff !important;
+            border: 1px solid #333333 !important;
         }
         
-        body, html {
+        /* 테이블 셀 */
+        table td, table th, .stDataFrame td, .stDataFrame th,
+        [data-testid="stDataFrame"] td, [data-testid="stDataFrame"] th {
             background-color: #ffffff !important;
-            background: #ffffff !important;
+            color: #000000 !important;
+            border: 1px solid #cccccc !important;
+            padding: 8px !important;
         }
         
-        /* 텍스트 색상 */
-        h1, h2, h3, h4, h5, h6, p, span, label, div, td, th, li {
-            color: #1a1a1a !important;
+        /* 테이블 헤더 */
+        table thead th, .stDataFrame thead th {
+            background-color: #f0f0f0 !important;
+            color: #000000 !important;
+            font-weight: bold !important;
         }
         
-        /* 컬럼/컨테이너 */
-        [data-testid="column"],
-        [data-testid="stVerticalBlock"],
-        [data-testid="stHorizontalBlock"] {
-            background-color: #ffffff !important;
-        }
-        
-        /* 메트릭 컨테이너 */
+        /* 메트릭 컨테이너 - 텍스트 보이게 */
         [data-testid="metric-container"] {
             background-color: #f8f9fa !important;
             border: 1px solid #dee2e6 !important;
         }
+        [data-testid="metric-container"] * {
+            color: #000000 !important;
+        }
+        [data-testid="stMetricValue"] {
+            color: #000000 !important;
+        }
+        [data-testid="stMetricDelta"] {
+            color: #000000 !important;
+        }
         
         /* 알림/정보 박스 */
         .stAlert, [data-testid="stAlert"] {
             background-color: #f8f9fa !important;
-            color: #1a1a1a !important;
+            border: 1px solid #dee2e6 !important;
+            color: #000000 !important;
         }
         
-        /* 탭 */
+        /* Plotly 차트 - 배경 및 텍스트 */
+        .js-plotly-plot, .plot-container, .plotly,
+        [data-testid="stPlotlyChart"] {
+            background-color: #ffffff !important;
+        }
+        
+        /* 차트 내부 텍스트 (범례, 축 레이블 등) */
+        .js-plotly-plot text, .plotly text,
+        .legend text, .gtitle, .xtitle, .ytitle,
+        .xtick text, .ytick text {
+            fill: #000000 !important;
+            color: #000000 !important;
+        }
+        
+        /* SVG 내부 텍스트 */
+        svg text, svg tspan {
+            fill: #000000 !important;
+        }
+        
+        /* 범례 배경 */
+        .legend, .legendtext {
+            fill: #000000 !important;
+        }
+        
+        /* 탭 버튼 */
         .stTabs [data-baseweb="tab-list"] {
-            background-color: #f0f2f6 !important;
+            background-color: #f0f0f0 !important;
         }
         .stTabs [data-baseweb="tab"] {
-            color: #1a1a1a !important;
-            background-color: #f0f2f6 !important;
+            color: #000000 !important;
+            background-color: #ffffff !important;
+        }
+        .stTabs [data-baseweb="tab-panel"] {
+            background-color: #ffffff !important;
+        }
+        
+        /* 버튼 */
+        .stButton > button, .stDownloadButton > button {
+            background-color: #f0f0f0 !important;
+            color: #000000 !important;
+            border: 1px solid #333333 !important;
+        }
+        
+        /* 라디오/체크박스 레이블 */
+        .stRadio label, .stCheckbox label {
+            color: #000000 !important;
         }
         
         /* 익스팬더 */
         .streamlit-expanderHeader {
-            background-color: #f0f2f6 !important;
-            color: #1a1a1a !important;
-        }
-        
-        /* 링크 */
-        a {
-            color: #1f77b4 !important;
-        }
-        
-        /* 구분선 */
-        hr {
-            border-top-color: #e0e0e0 !important;
-        }
-        
-        /* 데이터프레임/테이블 */
-        .stDataFrame, [data-testid="stDataFrame"], 
-        [data-testid="stTable"], table {
-            background-color: #ffffff !important;
-        }
-        
-        table td, table th {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            border: 1px solid #cccccc !important;
-        }
-        
-        table thead th {
             background-color: #f0f0f0 !important;
-            font-weight: bold !important;
+            color: #000000 !important;
+        }
+        [data-testid="stExpander"] {
+            background-color: #ffffff !important;
+        }
+        
+        /* 마크다운 텍스트 */
+        .stMarkdown, .stMarkdown p, .stMarkdown span,
+        .stMarkdown div, .stMarkdown li {
+            color: #000000 !important;
+        }
+        
+        /* 차트 그리드 라인 */
+        .gridlayer line, .zerolinelayer line {
+            stroke: #cccccc !important;
+        }
+        
+        /* 바 차트 텍스트 */
+        .bars text, .bar text {
+            fill: #000000 !important;
         }
     }
 </style>
