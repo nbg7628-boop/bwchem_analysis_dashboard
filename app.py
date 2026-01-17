@@ -1119,7 +1119,7 @@ if has_required_ids:
             yoy_color_sales = 'red' if yoy_diff_sales >= 0 else 'blue'
         
             st.markdown(f"### ● 매출액: {format_currency(period_sales)}")
-            st.markdown(f'<p style="font-size: 16px; margin-left: 20px; color: #000000;">&nbsp;&nbsp;&nbsp;달성률 <strong>{ach_rate_sales:.1f}%</strong> <span style="color: {ach_color_sales}; font-weight: bold;">{ach_arrow_sales}{abs(ach_diff_sales):.1f}%</span> / 동기비 <strong>{yoy_rate_sales:.1f}%</strong> <span style="color: {yoy_color_sales}; font-weight: bold;">{yoy_arrow_sales}{abs(yoy_diff_sales):.1f}%</span></p>', unsafe_allow_html=True)
+            st.markdown(f'<h4 style="margin: 0; padding: 0; color: #000000;">&nbsp;&nbsp;&nbsp;달성률 <strong>{ach_rate_sales:.1f}%</strong> <span style="color: {ach_color_sales}; font-weight: bold;">{ach_arrow_sales}{abs(ach_diff_sales):.1f}%</span> / 동기비 <strong>{yoy_rate_sales:.1f}%</strong> <span style="color: {yoy_color_sales}; font-weight: bold;">{yoy_arrow_sales}{abs(yoy_diff_sales):.1f}%</span></h4>', unsafe_allow_html=True)
             st.markdown(f"### &nbsp;&nbsp;&nbsp;└ 계획: {format_currency(period_plan_sales)} / 전년: {format_currency(period_sales_prev)}")
         
             st.markdown("")
@@ -1137,7 +1137,7 @@ if has_required_ids:
             yoy_color_qty = 'red' if yoy_diff_qty >= 0 else 'blue'
         
             st.markdown(f"### ● 판매수량: {period_qty:,.1f} D/M")
-            st.markdown(f'<p style="font-size: 16px; margin-left: 20px; color: #000000;">&nbsp;&nbsp;&nbsp;달성률 <strong>{ach_rate_qty:.1f}%</strong> <span style="color: {ach_color_qty}; font-weight: bold;">{ach_arrow_qty}{abs(ach_diff_qty):.1f}%</span> / 동기비 <strong>{yoy_rate_qty:.1f}%</strong> <span style="color: {yoy_color_qty}; font-weight: bold;">{yoy_arrow_qty}{abs(yoy_diff_qty):.1f}%</span></p>', unsafe_allow_html=True)
+            st.markdown(f'<h4 style="margin: 0; padding: 0; color: #000000;">&nbsp;&nbsp;&nbsp;달성률 <strong>{ach_rate_qty:.1f}%</strong> <span style="color: {ach_color_qty}; font-weight: bold;">{ach_arrow_qty}{abs(ach_diff_qty):.1f}%</span> / 동기비 <strong>{yoy_rate_qty:.1f}%</strong> <span style="color: {yoy_color_qty}; font-weight: bold;">{yoy_arrow_qty}{abs(yoy_diff_qty):.1f}%</span></h4>', unsafe_allow_html=True)
             st.markdown(f"### &nbsp;&nbsp;&nbsp;└ 계획: {period_plan_qty:,.1f} D/M / 전년: {period_qty_prev:,.1f} D/M")
     
         with col_right:
@@ -1171,7 +1171,7 @@ if has_required_ids:
             direct_yoy_color = 'red' if direct_yoy_diff >= 0 else 'blue'
         
             st.markdown(f"### ● 직접 판매수량: {direct_qty:,.1f} D/M")
-            st.markdown(f'<p style="font-size: 16px; margin-left: 20px; color: #000000;">&nbsp;&nbsp;&nbsp;달성률 <strong>{direct_ach:.1f}%</strong> <span style="color: {direct_ach_color}; font-weight: bold;">{direct_ach_arrow}{abs(direct_ach_diff):.1f}%</span> / 동기비 <strong>{direct_yoy:.1f}%</strong> <span style="color: {direct_yoy_color}; font-weight: bold;">{direct_yoy_arrow}{abs(direct_yoy_diff):.1f}%</span></p>', unsafe_allow_html=True)
+            st.markdown(f'<h4 style="margin: 0; padding: 0; color: #000000;">&nbsp;&nbsp;&nbsp;달성률 <strong>{direct_ach:.1f}%</strong> <span style="color: {direct_ach_color}; font-weight: bold;">{direct_ach_arrow}{abs(direct_ach_diff):.1f}%</span> / 동기비 <strong>{direct_yoy:.1f}%</strong> <span style="color: {direct_yoy_color}; font-weight: bold;">{direct_yoy_arrow}{abs(direct_yoy_diff):.1f}%</span></h4>', unsafe_allow_html=True)
             st.markdown(f"### &nbsp;&nbsp;&nbsp;└ 계획: {direct_plan_qty:,.1f} D/M / 전년: {direct_qty_prev:,.1f} D/M")
         
             st.markdown("")
@@ -1189,7 +1189,7 @@ if has_required_ids:
             indirect_yoy_color = 'red' if indirect_yoy_diff >= 0 else 'blue'
         
             st.markdown(f"### ● 간접 판매수량: {indirect_qty:,.1f} D/M")
-            st.markdown(f'<p style="font-size: 16px; margin-left: 20px; color: #000000;">&nbsp;&nbsp;&nbsp;달성률 <strong>{indirect_ach:.1f}%</strong> <span style="color: {indirect_ach_color}; font-weight: bold;">{indirect_ach_arrow}{abs(indirect_ach_diff):.1f}%</span> / 동기비 <strong>{indirect_yoy:.1f}%</strong> <span style="color: {indirect_yoy_color}; font-weight: bold;">{indirect_yoy_arrow}{abs(indirect_yoy_diff):.1f}%</span></p>', unsafe_allow_html=True)
+            st.markdown(f'<h4 style="margin: 0; padding: 0; color: #000000;">&nbsp;&nbsp;&nbsp;달성률 <strong>{indirect_ach:.1f}%</strong> <span style="color: {indirect_ach_color}; font-weight: bold;">{indirect_ach_arrow}{abs(indirect_ach_diff):.1f}%</span> / 동기비 <strong>{indirect_yoy:.1f}%</strong> <span style="color: {indirect_yoy_color}; font-weight: bold;">{indirect_yoy_arrow}{abs(indirect_yoy_diff):.1f}%</span></h4>', unsafe_allow_html=True)
             st.markdown(f"### &nbsp;&nbsp;&nbsp;└ 계획: {indirect_plan_qty:,.1f} D/M / 전년: {indirect_qty_prev:,.1f} D/M")
     
         st.markdown("---")
