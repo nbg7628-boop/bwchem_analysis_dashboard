@@ -2815,7 +2815,10 @@ if has_required_ids:
         
         # 진한 회색 배너로 통합 표시 (B, C와 동일)
         filter_text_a = f" | 📌 적용 필터: {' | '.join(filter_parts_a)}" if filter_parts_a else ""
-        st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월{filter_text_a}</span></div>', unsafe_allow_html=True)
+        if query_years:
+            st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월{filter_text_a}</span></div>', unsafe_allow_html=True)
+        else:
+            st.warning("데이터가 없습니다.")
         
         yearly_data = []
         for yr in available_years:
@@ -2919,7 +2922,10 @@ if has_required_ids:
         
         # 진한 회색 배너로 통합 표시 (SECTION A 스타일)
         filter_text_b = f" | 📌 적용 필터: {' | '.join(filter_parts_b)}" if filter_parts_b else ""
-        st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월{filter_text_b}</span></div>', unsafe_allow_html=True)
+        if query_years:
+            st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월{filter_text_b}</span></div>', unsafe_allow_html=True)
+        else:
+            st.warning("데이터가 없습니다.")
         
         has_filter = bool(search_clients) or bool(search_items) or bool(search_managers) or channel_option != "전체 보기"
         
@@ -3005,7 +3011,10 @@ if has_required_ids:
         
         # 진한 회색 배너로 통합 표시 (SECTION A 스타일)
         filter_text_c = f" | 📌 적용 필터: {' | '.join(filter_parts_c)}" if filter_parts_c else ""
-        st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월 | 단가 변동 시점 파악{filter_text_c}</span></div>', unsafe_allow_html=True)
+        if query_years:
+            st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월 | 단가 변동 시점 파악{filter_text_c}</span></div>', unsafe_allow_html=True)
+        else:
+            st.warning("데이터가 없습니다.")
         
         has_filter_c = bool(search_clients) or bool(search_items)
         
