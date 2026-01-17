@@ -483,6 +483,22 @@ st.markdown("""
         .bars text, .bar text {
             fill: #000000 !important;
         }
+        
+        /* ★★★ Tab B 배너 - 배경색 및 텍스트 보존 ★★★ */
+        div[style*="background-color: #2D3748"] {
+            background-color: #2D3748 !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        div[style*="background-color: #2D3748"] span {
+            color: #E2E8F0 !important;
+        }
+        
+        /* 인라인 스타일 color 속성 보존 */
+        span[style*="color:"] {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -1103,7 +1119,7 @@ if has_required_ids:
             yoy_color_sales = 'red' if yoy_diff_sales >= 0 else 'blue'
         
             st.markdown(f"### ● 매출액: {format_currency(period_sales)}")
-            st.markdown(f"#### &nbsp;&nbsp;&nbsp;달성률 **{ach_rate_sales:.1f}%** :{ach_color_sales}[**{ach_arrow_sales}{abs(ach_diff_sales):.1f}%**] / 동기비 **{yoy_rate_sales:.1f}%** :{yoy_color_sales}[**{yoy_arrow_sales}{abs(yoy_diff_sales):.1f}%**]")
+            st.markdown(f'#### &nbsp;&nbsp;&nbsp;달성률 **{ach_rate_sales:.1f}%** <span style="color: {ach_color_sales}; font-weight: bold;">{ach_arrow_sales}{abs(ach_diff_sales):.1f}%</span> / 동기비 **{yoy_rate_sales:.1f}%** <span style="color: {yoy_color_sales}; font-weight: bold;">{yoy_arrow_sales}{abs(yoy_diff_sales):.1f}%</span>', unsafe_allow_html=True)
             st.markdown(f"### &nbsp;&nbsp;&nbsp;└ 계획: {format_currency(period_plan_sales)} / 전년: {format_currency(period_sales_prev)}")
         
             st.markdown("")
@@ -1121,7 +1137,7 @@ if has_required_ids:
             yoy_color_qty = 'red' if yoy_diff_qty >= 0 else 'blue'
         
             st.markdown(f"### ● 판매수량: {period_qty:,.1f} D/M")
-            st.markdown(f"#### &nbsp;&nbsp;&nbsp;달성률 **{ach_rate_qty:.1f}%** :{ach_color_qty}[**{ach_arrow_qty}{abs(ach_diff_qty):.1f}%**] / 동기비 **{yoy_rate_qty:.1f}%** :{yoy_color_qty}[**{yoy_arrow_qty}{abs(yoy_diff_qty):.1f}%**]")
+            st.markdown(f'#### &nbsp;&nbsp;&nbsp;달성률 **{ach_rate_qty:.1f}%** <span style="color: {ach_color_qty}; font-weight: bold;">{ach_arrow_qty}{abs(ach_diff_qty):.1f}%</span> / 동기비 **{yoy_rate_qty:.1f}%** <span style="color: {yoy_color_qty}; font-weight: bold;">{yoy_arrow_qty}{abs(yoy_diff_qty):.1f}%</span>', unsafe_allow_html=True)
             st.markdown(f"### &nbsp;&nbsp;&nbsp;└ 계획: {period_plan_qty:,.1f} D/M / 전년: {period_qty_prev:,.1f} D/M")
     
         with col_right:
@@ -1155,7 +1171,7 @@ if has_required_ids:
             direct_yoy_color = 'red' if direct_yoy_diff >= 0 else 'blue'
         
             st.markdown(f"### ● 직접 판매수량: {direct_qty:,.1f} D/M")
-            st.markdown(f"#### &nbsp;&nbsp;&nbsp;달성률 **{direct_ach:.1f}%** :{direct_ach_color}[**{direct_ach_arrow}{abs(direct_ach_diff):.1f}%**] / 동기비 **{direct_yoy:.1f}%** :{direct_yoy_color}[**{direct_yoy_arrow}{abs(direct_yoy_diff):.1f}%**]")
+            st.markdown(f'#### &nbsp;&nbsp;&nbsp;달성률 **{direct_ach:.1f}%** <span style="color: {direct_ach_color}; font-weight: bold;">{direct_ach_arrow}{abs(direct_ach_diff):.1f}%</span> / 동기비 **{direct_yoy:.1f}%** <span style="color: {direct_yoy_color}; font-weight: bold;">{direct_yoy_arrow}{abs(direct_yoy_diff):.1f}%</span>', unsafe_allow_html=True)
             st.markdown(f"### &nbsp;&nbsp;&nbsp;└ 계획: {direct_plan_qty:,.1f} D/M / 전년: {direct_qty_prev:,.1f} D/M")
         
             st.markdown("")
@@ -1173,7 +1189,7 @@ if has_required_ids:
             indirect_yoy_color = 'red' if indirect_yoy_diff >= 0 else 'blue'
         
             st.markdown(f"### ● 간접 판매수량: {indirect_qty:,.1f} D/M")
-            st.markdown(f"#### &nbsp;&nbsp;&nbsp;달성률 **{indirect_ach:.1f}%** :{indirect_ach_color}[**{indirect_ach_arrow}{abs(indirect_ach_diff):.1f}%**] / 동기비 **{indirect_yoy:.1f}%** :{indirect_yoy_color}[**{indirect_yoy_arrow}{abs(indirect_yoy_diff):.1f}%**]")
+            st.markdown(f'#### &nbsp;&nbsp;&nbsp;달성률 **{indirect_ach:.1f}%** <span style="color: {indirect_ach_color}; font-weight: bold;">{indirect_ach_arrow}{abs(indirect_ach_diff):.1f}%</span> / 동기비 **{indirect_yoy:.1f}%** <span style="color: {indirect_yoy_color}; font-weight: bold;">{indirect_yoy_arrow}{abs(indirect_yoy_diff):.1f}%</span>', unsafe_allow_html=True)
             st.markdown(f"### &nbsp;&nbsp;&nbsp;└ 계획: {indirect_plan_qty:,.1f} D/M / 전년: {indirect_qty_prev:,.1f} D/M")
     
         st.markdown("---")
@@ -2846,7 +2862,7 @@ if has_required_ids:
         
         # 진한 회색 배너로 통합 표시 (B, C와 동일)
         filter_text_a = f" | 📌 적용 필터: {' | '.join(filter_parts_a)}" if filter_parts_a else ""
-        st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월{filter_text_a}</span></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5; -webkit-print-color-adjust: exact; print-color-adjust: exact;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월{filter_text_a}</span></div>', unsafe_allow_html=True)
         
         yearly_data = []
         for yr in available_years:
@@ -2950,7 +2966,7 @@ if has_required_ids:
         
         # 진한 회색 배너로 통합 표시 (SECTION A 스타일)
         filter_text_b = f" | 📌 적용 필터: {' | '.join(filter_parts_b)}" if filter_parts_b else ""
-        st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월{filter_text_b}</span></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5; -webkit-print-color-adjust: exact; print-color-adjust: exact;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월{filter_text_b}</span></div>', unsafe_allow_html=True)
         
         has_filter = bool(search_clients) or bool(search_items) or bool(search_managers) or channel_option != "전체 보기"
         
@@ -3036,7 +3052,7 @@ if has_required_ids:
         
         # 진한 회색 배너로 통합 표시 (SECTION A 스타일)
         filter_text_c = f" | 📌 적용 필터: {' | '.join(filter_parts_c)}" if filter_parts_c else ""
-        st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월 | 단가 변동 시점 파악{filter_text_c}</span></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background-color: #2D3748; padding: 12px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #4FD1C5; -webkit-print-color-adjust: exact; print-color-adjust: exact;"><span style="color: #E2E8F0; font-weight: bold;">🔍 조회기간 연도 범위: {min(query_years)}년 ~ {max(query_years)}년 | 💡 조회기간: {start_month}~{end_month}월 | 단가 변동 시점 파악{filter_text_c}</span></div>', unsafe_allow_html=True)
         
         has_filter_c = bool(search_clients) or bool(search_items)
         
