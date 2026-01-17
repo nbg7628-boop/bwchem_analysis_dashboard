@@ -273,20 +273,23 @@ st.markdown("""
         background-color: #262730 !important;
     }
     
-    /* ★★★ 컬럼/컨테이너 배경 다크 강제 ★★★ */
+    /* ★★★ 컬럼/컨테이너 배경 - 검정줄 방지 ★★★ */
     [data-testid="column"] {
-        background-color: #0e1117 !important;
+        background-color: transparent !important;
     }
     [data-testid="stVerticalBlock"] {
-        background-color: #0e1117 !important;
+        background-color: transparent !important;
     }
     [data-testid="stHorizontalBlock"] {
-        background-color: #0e1117 !important;
+        background-color: transparent !important;
     }
     
-    /* 구분선 */
+    /* 구분선 - 검정줄 방지 */
     hr {
-        border-color: #4a4a4a !important;
+        border: none !important;
+        border-top: 1px solid #4a4a4a !important;
+        background-color: transparent !important;
+        height: 1px !important;
     }
     
     /* ★★★ 링크 색상 - 항상 보이게 ★★★ */
@@ -310,12 +313,7 @@ st.markdown("""
         color: #fafafa !important;
     }
     
-    /* ★★★ 인쇄 전용 CSS - 흰 배경으로 자동 변환 ★★★ */
-    @media print {
-        color: #80bdff !important;
-    }
-    
-    /* ★★★ 인쇄 전용 CSS - 흰 배경으로 자동 변환 ★★★ */
+    /* ★★★ 인쇄/PDF 전용 CSS ★★★ */
     @media print {
         /* 전체 배경 흰색 */
         .stApp, .main, .block-container, [data-testid="stAppViewContainer"],
@@ -329,8 +327,48 @@ st.markdown("""
             background: #ffffff !important;
         }
         
+        /* ★★★ 검정줄 방지 - 컨테이너 배경 ★★★ */
+        [data-testid="stVerticalBlock"],
+        [data-testid="stHorizontalBlock"],
+        [data-testid="column"],
+        [data-testid="stVerticalBlockBorderWrapper"] {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+        
+        /* ★★★ 구분선 검정줄 방지 ★★★ */
+        hr {
+            border: none !important;
+            border-top: 1px solid #cccccc !important;
+            background-color: transparent !important;
+            background: transparent !important;
+            height: 1px !important;
+        }
+        
         /* 모든 텍스트 검정색 */
         h1, h2, h3, h4, h5, h6, p, span, label, div, td, th, li, a {
+            color: #000000 !important;
+        }
+        
+        /* ★★★ Streamlit 컬러 문법 (:red[], :blue[] 등) PDF 출력 지원 ★★★ */
+        /* Streamlit이 생성하는 컬러 span들 */
+        span[style*="color: red"], span[style*="color:red"],
+        [data-testid="stMarkdownContainer"] span[style*="red"] {
+            color: red !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        span[style*="color: blue"], span[style*="color:blue"],
+        [data-testid="stMarkdownContainer"] span[style*="blue"] {
+            color: blue !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        /* Streamlit 마크다운 내 strong/bold 텍스트 */
+        .stMarkdown strong, .stMarkdown b,
+        [data-testid="stMarkdownContainer"] strong,
+        [data-testid="stMarkdownContainer"] b {
             color: #000000 !important;
         }
         
@@ -373,6 +411,9 @@ st.markdown("""
             background-color: #f8f9fa !important;
             border: 1px solid #dee2e6 !important;
         }
+        [data-testid="metric-container"] * {
+            color: #000000 !important;
+        }
         
         /* 알림/정보 박스 */
         .stAlert, [data-testid="stAlert"] {
@@ -413,6 +454,9 @@ st.markdown("""
             color: #000000 !important;
             background-color: #ffffff !important;
         }
+        .stTabs [data-baseweb="tab-panel"] {
+            background-color: #ffffff !important;
+        }
         
         /* 버튼 */
         .stButton > button, .stDownloadButton > button {
@@ -438,11 +482,6 @@ st.markdown("""
             color: #000000 !important;
         }
         
-        /* 컬럼 내부 */
-        [data-testid="column"] {
-            background-color: #ffffff !important;
-        }
-        
         /* 차트 그리드 라인 */
         .gridlayer line, .zerolinelayer line {
             stroke: #cccccc !important;
@@ -451,6 +490,16 @@ st.markdown("""
         /* 바 차트 텍스트 */
         .bars text, .bar text {
             fill: #000000 !important;
+        }
+        
+        /* Tab B 배너 */
+        div[style*="background-color: #2D3748"] {
+            background-color: #2D3748 !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        div[style*="background-color: #2D3748"] span {
+            color: #E2E8F0 !important;
         }
     }
 </style>
