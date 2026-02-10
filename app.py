@@ -491,7 +491,7 @@ def check_password():
     password = st.text_input("비밀번호를 입력하세요", type="password")
     
     # secrets에서 비밀번호 읽기
-    correct_password = st.secrets.get("password", "bumwoo1234")
+    correct_password = st.secrets["password"]
     
     if password == correct_password:
         st.session_state["password_correct"] = True
